@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="resources/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Minesweeper</title>
+  </head>
+  <body oncontextmenu="return false;">
+    <div class="menu">
+      <div class="divForForm">
+        <form
+          action="javascript:;"
+          onsubmit="updateValues(false, this)"
+          id="myForm"
+          method="post"
+          name="myForm"
+          target="dummyFrame"
+        >
+          <label for="x" class="formRowsLabel">Rows</label>
+          <input
+            type="number"
+            id="x"
+            name="x"
+            class="formRows"
+            min="5"
+            max="50"
+            step="1"
+            value="10"
+          />
+          <label for="y" class="formColumnLabel">Columns</label>
+          <input
+            type="number"
+            id="y"
+            name="y"
+            class="formColumns"
+            min="5"
+            max="50"
+            step="1"
+            value="10"
+          />
+          <label for="bombCount" class="sliderLabel">Bomb %</label>
+          <input
+            type="range"
+            name="bombCount"
+            class="slider"
+            min="5"
+            max="70"
+            value="15"
+          />
+          <input type="submit" class="formSubmit" value="Create the board" />
+        </form>
+      </div>
+      <button
+        id="modeSelector"
+        class="modeSelector revealMode"
+        onclick="toggleMode()"
+      >
+        🔍
+      </button>
+      <div class="menuItems">
+        <p id="bombs-left" class="bombs-left">15</p>
+        <p id="timer" class="timer">0:00</p>
+      </div>
+    </div>
+
+    <div id="board" class="board"></div>
+
+    <div id="popup" class="popup" style="visibility: hidden">
+      <div id="popupBox" class="popupBox">
+        <h2 id="popupTitle">Game Over!</h2>
+        <a id="popupClose" class="popupClose" href="#">X</a>
+        <p id="popupContent" class="popupContent"></p>
+        <button id="popupReplay" class="popupReplay">Replay?</button>
+      </div>
+    </div>
+
+    <iframe
+      name="dummyFrame"
+      width="0"
+      height="0"
+      border="0"
+      style="display: none"
+    ></iframe>
+
+    <script src="sliderListener.js"></script>
+  </body>
+</html>
