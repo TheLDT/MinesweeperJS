@@ -74,12 +74,16 @@ function flagCell(cell, x, y) {
         bombsLeftMessage.classList.toggle("bombs-left");
       }
     } else {
-      minefield[x][y].isFlag = true;
-      cell.className = "flag";
-      bombsLeftMessage.innerText = toInt - 1;
-      if (toInt - 1 < 0 && toInt == 0) {
-        bombsLeftMessage.classList.toggle("thinking");
-        bombsLeftMessage.classList.toggle("bombs-left");
+      if (cell.className == "question") {
+        cell.className = "";
+      } else {
+        minefield[x][y].isFlag = true;
+        cell.className = "flag";
+        bombsLeftMessage.innerText = toInt - 1;
+        if (toInt - 1 < 0 && toInt == 0) {
+          bombsLeftMessage.classList.toggle("thinking");
+          bombsLeftMessage.classList.toggle("bombs-left");
+        }
       }
     }
   }
@@ -118,6 +122,7 @@ function makeBoard() {
         let x = parseInt(cell.id.split("-")[0]);
         let y = parseInt(cell.id.split("-")[1]);
         transitionDelay = transitionDelayBasis;
+
         if (e.button === 0) {
           if (revealMode) revealCell(cell, x, y);
           else flagCell(cell, x, y);
@@ -238,6 +243,10 @@ function find_other_empty(bombX, bombY, cell) {
     if (!minefield[x][y].isBomb && !minefield[x][y].isPressed) {
       minefield[x][y].isPressed = true;
       pressedCells++;
+      if(minefield[x][y].isFlag) {
+        let toInt = parseInt(bombsLeftMessage.innerText);
+        bombsLeftMessage.innerText = toInt + 1;
+      }
       if (minefield[x][y].isEmpty) {
         curCell.className = "empty";
         curCell.style.transitionDelay = `${transitionDelay}ms`;
@@ -271,6 +280,7 @@ function setupBombsAndNeighbours() {
 }
 
 function gameOver(win) {
+  pressedCells = 0; // fixes the win if the player presses the last bomb
   let popup = document.getElementById("popup");
   let popupContent = document.getElementById("popupContent");
   let popupClose = document.getElementById("popupClose");
