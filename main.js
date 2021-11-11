@@ -57,8 +57,8 @@ function revealCell(cell, x, y) {
     find_other_empty(x, y, 0);
   } else {
     cell.textContent = minefield[x][y].neighbours;
+    cell.className = "pressed";
     cell.classList.add("c" + minefield[x][y].neighbours);
-    cell.classList.add("pressed");
   }
 }
 
@@ -67,7 +67,7 @@ function flagCell(cell, x, y) {
   if (!minefield[x][y].isPressed) {
     if (minefield[x][y].isFlag) {
       minefield[x][y].isFlag = false;
-      cell.className = "";
+      cell.className = "question";
       bombsLeftMessage.innerText = toInt + 1;
       if (toInt + 1 == 0 && toInt < 0) {
         bombsLeftMessage.classList.toggle("thinking");
@@ -100,6 +100,7 @@ function makeBoard() {
   bombsLeftMessage = document.getElementById("bombs-left");
   timer = document.getElementById("timer");
   startTimer();
+  bombsLeftMessage.className = "bombs-left";
   bombsLeftMessage.innerText = bombs;
   let board = document.getElementById("board");
   if (board.contains(table)) board.removeChild(table);
@@ -243,8 +244,8 @@ function find_other_empty(bombX, bombY, cell) {
         transitionDelay += transitionDelayBasis;
         find_other_empty(x, y, 0);
       } else {
+        curCell.className = "pressed";
         curCell.classList.add("c" + minefield[x][y].neighbours);
-        curCell.classList.add("pressed");
         curCell.textContent = minefield[x][y].neighbours;
       }
     }

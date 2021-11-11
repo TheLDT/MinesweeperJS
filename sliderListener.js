@@ -30,6 +30,6 @@ document.querySelector(".slider").oninput = function () {
 
 function updateBombCounter() {
   if (document.querySelector(".started") != null) return;
-  bombs = Math.ceil(rows * columns * slider);
+  bombs = Math.max(Math.min(Math.ceil(rows * columns * slider), 1750),2);
   document.getElementById("bombs-left").innerText = bombs;
 }
