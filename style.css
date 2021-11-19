@@ -17,8 +17,10 @@ body {
   display: grid;
   background-color: var(--background-color);
   border: 2px solid black;
-  border-radius: 20px;
+  border-radius: 5vh;
   width: max(100%, 90vh);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .formRowsLabel {
@@ -66,13 +68,18 @@ form {
     "a b c d"
     "e f f f"
     "g g g g";
-  row-gap: 5px;
+  row-gap: 0.5vh;
   grid-column-start: 1;
   grid-column-end: 2;
   margin-left: 2vh;
   margin-right: 0;
   margin-top: 2vh;
   margin-bottom: 2vh;
+  width: 50vh;
+}
+
+form > * {
+  font-size: 2.5vh;
 }
 
 form input[type="text"] {
@@ -82,8 +89,8 @@ form input[type="text"] {
 
 form input[type="submit"] {
   font-weight: bold;
-  border: #2c3e50 solid 2px;
-  border-radius: 5px;
+  border: #2c3e50 solid 0.5vh;
+  border-radius: 1vh;
   vertical-align: middle;
 }
 
@@ -99,15 +106,14 @@ form input[type="submit"]:hover {
   font-size: 5vh;
   margin-left: 10%;
   align-self: center;
-  outline: solid 3px black;
+  outline: solid 0.8vh black;
   border-color: transparent;
   border-radius: 100%;
   opacity: 0.8;
-  width: 40%;
-  max-width: 10vh;
-  height: 10vh;
-  min-width: 50px;
-  min-height: 50px;
+  max-width: 15vh;
+  max-height: 15vh;
+  min-width: 10vh;
+  min-height: 10vh;
   text-align: center;
 }
 
@@ -161,9 +167,9 @@ form input[type="submit"]:hover {
     #fff 100%
   );
   border-radius: 10px;
-  height: 10px;
+  height: 1vh;
   opacity: 0.7;
-  box-shadow: 1px 1px 2px 1px #333;
+  box-shadow: 0.5vh 0.5vh 1vh 0.5vh #333;
 }
 
 .slider:hover,
@@ -173,8 +179,8 @@ form input[type="submit"]:hover {
 
 .slider::-moz-range-thumb {
   border: none;
-  height: 20px;
-  width: 20px;
+  height: 1vh;
+  width: 1vh;
   background: url("resources/bomb.png");
   background-size: contain;
   background-position: center center;
@@ -186,8 +192,8 @@ form input[type="submit"]:hover {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: none;
-  height: 20px;
-  width: 20px;
+  height: 2.5vh;
+  width: 2.5vh;
   background: url("resources/bomb.png");
   background-size: contain;
   background-position: center center;
@@ -212,8 +218,7 @@ table {
   table-layout: fixed;
   align-self: center;
   overflow: auto;
-  border: black solid 5px;
-  border-radius: 10px;
+  border: black solid 0.5vh;
   margin-top: 1vh;
 }
 
